@@ -1,346 +1,398 @@
-class script(object):   
-    HELP_TXT = """𝙷𝙴𝚈 {}\n𝙷𝙴𝚁𝙴 𝙸𝚂 𝙼𝚈 𝙷𝙴𝙻𝙿 𝙲𝙾𝙼𝙼𝙰𝙽𝙳𝚂."""
-
-    ABOUT_TXT = """✯ 𝙼𝚈 𝙽𝙰𝙼𝙴 : {}
-✯ 𝙲𝚁𝙴𝙰𝚃𝙾𝚁 : <a href=https://t.me/mr_MKN>𝙈𝙧.𝙈𝙆𝙉 𝙏𝙂</a>
-✯ 𝙻𝙸𝙱𝚁𝙰𝚁𝚈 : 𝙿𝚈𝚁𝙾𝙶𝚁𝙰𝙼
-✯ 𝙻𝙰𝙽𝙶𝚄𝙰𝙶𝙴 : 𝙿𝚈𝚃𝙷𝙾𝙽 𝟹
-✯ 𝙳𝙰𝚃𝙰 𝙱𝙰𝚂𝙴 : 𝙼𝙾𝙽𝙶𝙾-𝙳𝙱
-✯ 𝙱𝙾𝚃 𝚂𝙴𝚁𝚅𝙴𝚁 : 𝙰𝙽𝚈𝚆𝙷𝙴𝚁𝙴
-✯ 𝙱𝚄𝙸𝙻𝙳 𝚅𝙴𝚁𝚂𝙸𝙾𝙽: 𝙿𝚁𝙾𝙵𝙴𝚂𝚂𝙾𝚁-𝙱𝙾𝚃 𝚟3.0.0"""
-
-    SOURCE_TXT = """<b>NOTE:</b>
-- 𝚂𝙾𝚄𝚁𝙲𝙴 𝙲𝙾𝙳𝙴 𝙲𝙻𝙸𝙲𝙺 𝙷𝙴𝚁 👉 :<a href=https://github.com/MrMKN/PROFESSOR-BOT>𝐏𝐑𝐎𝐅𝐄𝐒𝐒𝐎𝐑-𝐁𝐎𝐓</a>
-
-<b>DEVS:</b>
-- 𝙳𝚎𝚟 1<a href=https://t.me/mr_MKN>𝙼𝚛.𝙼𝙺𝙽 𝚃𝙶</a>
-- 𝙳𝚎𝚟 2<a href=https://t.me/AboutAadhi>𝙰𝙰𝙳𝙷𝙸</a>"""
-
-    FILE_TXT = """➤ 𝐇𝐞𝐥𝐩: 𝐅𝐢𝐥𝐞 𝐒𝐭𝐨𝐫𝐞 𝐌𝐨𝐝𝐮𝐥𝐞../
-
-<b>𝙱𝚈 𝚄𝚂𝙸𝙽𝙶 𝚃𝙷𝙸𝚂 𝙼𝙾𝙳𝚄𝙻𝙴 𝚈𝙾𝚄 𝙲𝙰𝙽 𝚂𝚃𝙾𝚁𝙴 𝙵𝙸𝙻𝙴𝚂 𝙸𝙽 𝙼𝚈 𝙳𝙰𝚃𝙰𝙱𝙰𝚂𝙴 𝙰𝙽𝙳 𝙸 𝚆𝙸𝙻𝙻 𝙶𝙸𝚅𝙴 𝚈𝙾𝚄 𝙰 𝙿𝙴𝚁𝙼𝙰𝙽𝙴𝙽𝚃 𝙻𝙸𝙽𝙺  𝚃𝙾 𝙰𝙲𝙲𝙴𝚂𝚂 𝚃𝙷𝙴 𝚂𝙰𝚅𝙴𝙳 𝙵𝙸𝙻𝙴𝚂.𝙸𝙵 𝚈𝙾𝚄 𝚆𝙰𝙽𝚃 𝚃𝙾 𝙰𝙳𝙳 𝙵𝙸𝙻𝙴𝚂 𝙵𝚁𝙾𝙼 𝙰 𝙿𝚄𝙱𝙻𝙸𝙲 𝙲𝙷𝙰𝙽𝙽𝙴𝙻 𝚂𝙴𝙽𝙳 𝚃𝙷𝙴 𝙵𝙸𝙻𝚆 𝙻𝙸𝙽𝙺 𝙾𝙽𝙻𝚈  𝙾𝚁 𝚈𝙾𝚄 𝚆𝙰𝙽𝚃 𝚃𝙾 𝙰𝙳𝙳 𝙵𝙸𝙻𝙴𝚂 𝙵𝚁𝙾𝙼 𝙰  𝙿𝚁𝙸𝚅𝙰𝚃𝙴 𝙲𝙷𝙰𝙽𝙽𝙴𝙻 𝚈𝙾𝚄 𝙼𝚄𝚂𝚃 𝙼𝙰𝙺𝙴 𝙼𝙴 𝙰𝙳𝙼𝙸𝙽 𝙾𝙽 𝚃𝙷𝙴 𝙲𝙷𝙰𝙽𝙽𝙴𝙻 𝚃𝙾 𝙰𝙲𝙲𝙴𝚂𝚂 𝙵𝙸𝙻𝙴𝚂...//</b>
-
-⪼ 𝐂𝐨𝐦𝐦𝐚𝐧𝐝𝐬 𝐚𝐧𝐝 𝐔𝐬𝐚𝐠𝐞 ›
-
-➪ /plink ›› <b>𝚁𝙴𝙿𝙻𝚈 𝚃𝙾 𝙰𝙽𝚈 𝙼𝙴𝙳𝙸𝙰 𝚃𝙾 𝙶𝙴𝚃 𝙻𝙸𝙽𝙺.</b>
-➪ /pbatch ›› <b>𝚄𝚂𝙴 𝚈𝙾𝚄𝚁 𝙼𝙴𝙳𝙸𝙰 𝙻𝙸𝙽𝙺 𝚆𝙸𝚃𝙷 𝚃𝙷𝙸𝚂 𝙲𝙾𝙼𝙼𝙰𝙽𝙳.</b>
-➪ /batch ›› <b>𝚃𝙾 𝙲𝚁𝙴𝙰𝚃𝙴 𝙻𝙸𝙽𝙺 𝙵𝙾𝚁 𝙼𝚄𝙻𝚃𝙸𝙿𝙻𝙴 𝙵𝙸𝙻𝙴𝚂.</b>
-
-⪼ 𝐄𝐱𝐚𝐦𝐩𝐥𝐞 ›
-
-<code>/batch https://t.me/mkn_bots_updates https://t.me/mkn_bots_updates</code>
-
-𝙲𝚁𝙴𝙳𝙸𝚃𝚂 ›› <a href=https://t.me/mkn_bots_updates><b>𝙼𝙺𝙽 𝙱𝙾𝚃𝚉</b></a>"""
+class script(object):
+    START_TXT = """ʜᴇy {}
     
-    MANUELFILTER_TXT = """Help: <b>Filters</b>
+ɪ ᴀᴍ ᴀ ᴘᴏᴡᴇʀꜰᴜʟ ᴀᴜᴛᴏꜰɪʟᴛᴇʀ + ᴍᴀɴᴜᴀʟꜰɪʟᴛᴇʀ + ꜰɪʟᴇsᴛᴏʀᴇ ʙᴏᴛ.
+ʏᴏᴜ ᴄᴀɴ ᴜsᴇ ᴍᴇ ɪɴ ʏᴏᴜʀ ɢʀᴏᴜᴘ ɪ ᴡɪʟʟ ɢɪᴠᴇ ᴍᴏᴠɪᴇs ᴏʀ sᴇʀɪᴇs ɪɴ ʏᴏᴜʀ ɢʀᴏᴜᴘ  !!"""
 
-- Filter is the feature were users can set automated replies for a particular keyword and ᗩᒍᗩ᙭  will respond whenever a keyword is found the message
-
-<b>NOTE:</b>
-1. This bot should have admin privillage.
-2. only admins can add filters in a chat.
-3. alert buttons have a limit of 64 characters.
-
-<b>Commands and Usage:</b>
-• /filter - <code>add a filter in chat</code>
-• /filters - <code>list all the filters of a chat</code>
-• /del - <code>delete a specific filter in chat</code>
-• /delall - <code>delete the whole filters in a chat (chat owner only)</code>
-
-• <code>/g_filter off</code> use this commoand + on/off in your group to control global filter in your group"""
+    FILTERS_TXT = """<b>Hᴇʏ {}
+Hᴇʀᴇ Is Tʜᴇ Hᴇʟᴘ Fᴏʀ Mʏ Cᴏᴍᴍᴀɴᴅs.</b>"""
+    
+    HELP_TXT = """ ʜᴏᴡ ᴛᴏ ᴜꜱᴇ ᴍᴇ!?
    
-    BUTTON_TXT = """Help: <b>Buttons</b>
+-> ᴀᴅᴅ ᴍᴇ ᴛᴏ ᴀɴʏ ɢʀᴏᴜᴘ ᴀɴᴅ ᴍᴀᴋᴇ ᴍᴇ ᴀᴅᴍɪɴ 
+-> ᴀᴅᴅ ᴍᴇ ᴛᴏ ʏᴏᴜʀ ᴅᴇꜱɪʀᴇᴅ ᴄʜᴀɴɴᴇʟ  
+    
+ʙᴏᴛ ᴄᴏᴍᴍᴀɴᴅꜱ (ᴡᴏʀᴋꜱ ᴏɴʟʏ ɪɴ ɢʀᴏᴜᴘꜱ) :  
+-> ᴄʟɪᴄᴋ ʙᴇʟᴏᴡ ʙᴜᴛᴛᴏɴꜱ ᴛᴏ ᴋɴᴏᴡ ᴍᴏʀᴇ ✔ """
 
--this bot Supports both url and alert inline buttons.
+    SUPPORT_TXT = """⍟ Cʜᴀɴɴᴇʟs & Gʀᴏᴜᴘs Mᴏᴅᴜʟᴇ ⍟
+🗣️ Bᴏᴛ Sᴜᴘᴘᴏʀᴛ Gʀᴏᴜᴘ."""
 
-<b>NOTE:</b>
-1. Telegram will not allows you to send buttons without any content, so content is mandatory.
-2. This bot supports buttons with any telegram media type.
-3. Buttons should be properly parsed as markdown format
+    OWNER_INFO = """
+<b>⍟───[ ᴏᴡɴᴇʀ ᴅᴇᴛᴀɪʟꜱ ]───⍟
+    
+• ꜰᴜʟʟ ɴᴀᴍᴇ : MATRIX SER
+• ᴜꜱᴇʀɴᴀᴍᴇ : @MATRIX_TG
+• ᴘᴇʀᴍᴀɴᴇɴᴛ ᴅᴍ ʟɪɴᴋ : <a href='t.me/MATRIX_TG'>ᴄʟɪᴄᴋ ʜᴇʀᴇ</a></b>"""
+    
+    ABOUT_TXT = """<b>✯ Mʏ Nᴀᴍᴇ: {}
+✯ Cʀᴇᴀᴛᴏʀ: <a href='https://t.me/MLZ_BOTZ>MLZ_BOTZ</a>
+✯ Lɪʙʀᴀʀʏ: <a href='https://docs.pyrogram.org/'>Pʏʀᴏɢʀᴀᴍ</a>
+✯ Lᴀɴɢᴜᴀɢᴇ: <a href='https://www.python.org/download/releases/3.0/'>Pʏᴛʜᴏɴ 3</a>
+✯ DᴀᴛᴀBᴀsᴇ: <a href='https://www.mongodb.com/'>MᴏɴɢᴏDB</a>
+✯ Bᴏᴛ Sᴇʀᴠᴇʀ: VPS
+✯ Bᴜɪʟᴅ Sᴛᴀᴛᴜs: [ Sᴛᴀʙʟᴇ ]</b>"""
 
-<b>URL buttons:</b>
-<code>[Button Text](buttonurl:xxxxxxxxxxxx)</code>
+    SOURCE_TXT = """<b>ɴᴏᴛᴇ:
+- ᴛʜɪꜱ ʙᴏᴛ ɪꜱ ᴀɴ ᴏᴘᴇɴ ꜱᴏᴜʀᴄᴇ ᴘʀᴏᴊᴇᴄᴛ.
+- ꜱᴏᴜʀᴄᴇ - <a href="https://github.com/Joelkb/DQ-The-File-Donor">ʜᴇʀᴇ</a>
+Dᴇᴠᴇʟᴏᴘᴇʀ:
+- <a href="https://t.me/creatorbeatz">Jᴏᴇʟ ᠰ TɢX</a></b>"""
 
-<b>Alert buttons:</b>
-<code>[Button Text](buttonalert:This is an alert message)</code>"""
+    MATFILTER = """
+<b>Filters</b>
 
-    AUTOFILTER_TXT = """**𝙰𝚄𝚃𝙾 𝙵𝙸𝙻𝚃𝙴𝚁 𝙾𝙽/𝙾𝙵𝙵 𝙼𝙾𝙳𝚄𝙻𝙴..
-<u>USE THIS COMMAND ON YOUR GROUP</u>
+• /filters: List all active filters saved in the chat.
 
-• /autofilter on - autofilter enable in yor chat
-• /autofilter off - autofilter disable in your chat 
+<b>Admin only:</b>
+• /filter "`<keyword>`" `<reply message>`: Add a filter to this chat. The bot will now reply that message whenever 'keyword'
+is mentioned. If you reply to a sticker with a keyword, the bot will reply with that sticker.
 
-𝙰𝚄𝚃𝙾 𝙵𝙸𝙻𝚃𝙴𝚁 𝙸𝚂 𝚃𝙷𝙴 𝙵𝙴𝙰𝚃𝚄𝚁𝙴 𝚃𝙾 𝙵𝙸𝙻𝚃𝙴𝚁 𝙰𝙽𝙳 𝚂𝙰𝚅𝙴  𝚃𝙷𝙴 𝙵𝙸𝙻𝙴𝚂 𝙰𝚄𝚃𝙾𝙼𝙰𝚃𝙸𝙲𝙰𝙻𝙻𝚈 𝙵𝚁𝙾𝙼 𝙲𝙷𝙰𝙽𝙽𝙴𝙻 𝚃𝙾 𝙶𝚁𝙾𝚄𝙿. 𝚈𝙾𝚄 𝙲𝙰𝙽 𝚄𝚂𝙴 𝚃𝙷𝙴 𝙵𝙾𝙻𝙻𝙾𝚆𝙸𝙽𝙶 𝙲𝙾𝙼𝙼𝙰𝙽𝙳𝚂 𝚃𝙾 𝙾𝙽 𝙰𝙽𝙳 𝙾𝙵𝙵 𝚃𝙷𝙴 𝙰𝚄𝚃𝙾𝙵𝙸𝙻𝚃𝙴𝚁 𝙸𝙽 𝚈𝙾𝚄𝚁 𝙶𝚁𝙾𝚄𝙿../
+If you want your keyword to be a sentence, use quotes. eg: /filter "hey there" How are you doin?
+<b>Example:</b>
+`/filter "filtername" Reply Text`
 
-𝙲𝙾𝙼𝙼𝙰𝙽𝙳𝚂 :-
-›› /set_template - 𝚂𝙴𝚃 𝙲𝚄𝚂𝚃𝙾𝙼 𝙸𝙼𝙳𝙱 𝚃𝙴𝙼𝙿𝙻𝙰𝚃𝙴 𝙵𝙾𝚁 𝙰𝚄𝚃𝙾 𝙵𝙸𝙻𝚃𝙴𝚁. 
-›› /get_template - 𝙶𝙴𝚃 𝙲𝚄𝚁𝚁𝙴𝙽𝚃 𝙸𝙼𝙳𝙱 𝚃𝙴𝙼𝙿𝙻𝙰𝚃𝙴 𝙾𝙵 𝙰𝚄𝚃𝙾 𝙵𝙸𝙻𝚃𝙴𝚁.
+Aliases for filters can be too set, just put '|' between the filternames you want.
+<b>Example:</b>
+`/filter "filtername1|filtername2" Reply Text`
+Using the you can make a single filter work on 2 filternames without manually adding another one.
 
-𝙲𝚁𝙴𝙳𝙸𝚃𝚂 :- <a href=https://t.me/mr_MKN>Mr.MKN TG</a>**"""
+• /stop `<filter keyword>`: Stop that filter.
 
-    CONNECTION_TXT = """Help: <b>Connections</b>
+<b>For Example:</b>
+If you stop the "filtername1" from above example, the bot will not respond to "filtername2".
 
-- Used to connect bot to PM for managing filters 
-- it helps to avoid spamming in groups.
+<b>Chat creator only:</b>
+• /removeallfilters: Remove all chat filters at once.
 
-<b>NOTE:</b>
-1. Only admins can add a connection.
-2. Send <code>/connect</code> for connecting me to ur PM
+**Note:**
+Currently there is a limit of 50 filters and 120 aliases per chat.
+All filter keywords are in lowercase."""
 
-<b>Commands and Usage:</b>
-• /connect  - <code>connect a particular chat to your PM</code>
-• /disconnect  - <code>disconnect from a chat</code>
-• /connections - <code>list all your connections</code>"""
+    BUTTON_TXT = """ʜᴇʟᴘ: <b>ʙᴜᴛᴛᴏɴꜱ</b>
+- ᴛʜɪꜱ ʙᴏᴛ ꜱᴜᴘᴘᴏʀᴛꜱ ʙᴏᴛʜ ᴜʀʟ ᴀɴᴅ ᴀʟᴇʀᴛ ɪɴʟɪɴᴇ ʙᴜᴛᴛᴏɴꜱ.
+<b>ɴᴏᴛᴇ:</b>
+1. ᴛᴇʟᴇɢʀᴀᴍ ᴡɪʟʟ ɴᴏᴛ ᴀʟʟᴏᴡꜱ ʏᴏᴜ ᴛᴏ ꜱᴇɴᴅ ʙᴜᴛᴛᴏɴꜱ ᴡɪᴛʜᴏᴜᴛ ᴀɴʏ ᴄᴏɴᴛᴇɴᴛ, ꜱᴏ ᴄᴏɴᴛᴇɴᴛ ɪꜱ ᴍᴀɴᴅᴀᴛᴏʀʏ.
+2. ᴛʜɪꜱ ʙᴏᴛ ꜱᴜᴘᴘᴏʀᴛꜱ ʙᴜᴛᴛᴏɴꜱ ᴡɪᴛʜ ᴀɴʏ ᴛᴇʟᴇɢʀᴀᴍ ᴍᴇᴅɪᴀ ᴛʏᴘᴇ.
+3. ʙᴜᴛᴛᴏɴꜱ ꜱʜᴏᴜʟᴅ ʙᴇ ᴘʀᴏᴘᴇʀʟʏ ᴘᴀʀꜱᴇᴅ ᴀꜱ ᴍᴀʀᴋᴅᴏᴡɴ ꜰᴏʀᴍᴀᴛ
+<b>ᴜʀʟ ʙᴜᴛᴛᴏɴꜱ:</b>
+<code>[Button Text](buttonurl:https://t.me/DQ_The_File_Donor_Updates)</code>
+<b>ᴀʟᴇʀᴛ ʙᴜᴛᴛᴏɴꜱ:</b>
+<code>[Button Text](buttonalert:ᴛʜɪꜱ ɪꜱ ᴀɴ ᴀʟᴇʀᴛ ᴍᴇꜱꜱᴀɢᴇ)</code>"""
 
-    EXTRAMOD_TXT = """Help: <b>Extra Modules</b>
+    AUTOFILTER_TXT = """ʜᴇʟᴘ: <b>ᴀᴜᴛᴏ ꜰɪʟᴛᴇʀ</b>
+<b>ɴᴏᴛᴇ: Fɪʟᴇ Iɴᴅᴇx</b>
+1. ᴍᴀᴋᴇ ᴍᴇ ᴛʜᴇ ᴀᴅᴍɪɴ ᴏꜰ ʏᴏᴜʀ ᴄʜᴀɴɴᴇʟ ɪꜰ ɪᴛ'ꜱ ᴘʀɪᴠᴀᴛᴇ.
+2. ᴍᴀᴋᴇ ꜱᴜʀᴇ ᴛʜᴀᴛ ʏᴏᴜʀ ᴄʜᴀɴɴᴇʟ ᴅᴏᴇꜱ ɴᴏᴛ ᴄᴏɴᴛᴀɪɴꜱ ᴄᴀᴍʀɪᴘꜱ, ᴘᴏʀɴ ᴀɴᴅ ꜰᴀᴋᴇ ꜰɪʟᴇꜱ.
+3. ꜰᴏʀᴡᴀʀᴅ ᴛʜᴇ ʟᴀꜱᴛ ᴍᴇꜱꜱᴀɢᴇ ᴛᴏ ᴍᴇ ᴡɪᴛʜ Qᴜᴏᴛᴇꜱ. ɪ'ʟʟ ᴀᴅᴅ ᴀʟʟ ᴛʜᴇ ꜰɪʟᴇꜱ ɪɴ ᴛʜᴀᴛ ᴄʜᴀɴɴᴇʟ ᴛᴏ ᴍʏ ᴅʙ.
 
-<b>NOTE:</b>
-these are the extra features of this bot
+<b>Nᴏᴛᴇ: AᴜᴛᴏFɪʟᴛᴇʀ</b>
+1. Aᴅᴅ ᴛʜᴇ ʙᴏᴛ ᴀs ᴀᴅᴍɪɴ ᴏɴ ʏᴏᴜʀ ɢʀᴏᴜᴘ.
+2. Usᴇ /connect ᴀɴᴅ ᴄᴏɴɴᴇᴄᴛ ʏᴏᴜʀ ɢʀᴏᴜᴘ ᴛᴏ ᴛʜᴇ ʙᴏᴛ.
+3. Usᴇ /settings ᴏɴ ʙᴏᴛ's PM ᴀɴᴅ ᴛᴜʀɴ ᴏɴ AᴜᴛᴏFɪʟᴛᴇʀ ᴏɴ ᴛʜᴇ sᴇᴛᴛɪɴɢs ᴍᴇɴᴜ."""
 
-<b>Commands and Usage:</b>
-• /id - <code>get id of a specifed user.</code>
-• /info  - <code>get information about a user.</code>
-• /imdb  - <code>get the film information from IMDb source.</code>
-• /search  - <code>get the film information from various sources.</code>"""
+    CONNECTION_TXT = """ʜᴇʟᴘ: <b>ᴄᴏɴɴᴇᴄᴛɪᴏɴꜱ</b>
+- ᴜꜱᴇᴅ ᴛᴏ ᴄᴏɴɴᴇᴄᴛ ʙᴏᴛ ᴛᴏ ᴘᴍ ꜰᴏʀ ᴍᴀɴᴀɢɪɴɢ ꜰɪʟᴛᴇʀꜱ 
+- ɪᴛ ʜᴇʟᴘꜱ ᴛᴏ ᴀᴠᴏɪᴅ ꜱᴘᴀᴍᴍɪɴɢ ɪɴ ɢʀᴏᴜᴘꜱ.
+<b>ɴᴏᴛᴇ:</b>
+1. ᴏɴʟʏ ᴀᴅᴍɪɴꜱ ᴄᴀɴ ᴀᴅᴅ ᴀ ᴄᴏɴɴᴇᴄᴛɪᴏɴ.
+2. ꜱᴇɴᴅ <code>/ᴄᴏɴɴᴇᴄᴛ</code> ꜰᴏʀ ᴄᴏɴɴᴇᴄᴛɪɴɢ ᴍᴇ ᴛᴏ ʏᴏᴜʀ ᴘᴍ
+Cᴏᴍᴍᴀɴᴅs Aɴᴅ Usᴀɢᴇ:
+• /connect  - <code>ᴄᴏɴɴᴇᴄᴛ ᴀ ᴘᴀʀᴛɪᴄᴜʟᴀʀ ᴄʜᴀᴛ ᴛᴏ ʏᴏᴜʀ ᴘᴍ</code>
+• /disconnect  - <code>ᴅɪꜱᴄᴏɴɴᴇᴄᴛ ꜰʀᴏᴍ ᴀ ᴄʜᴀᴛ</code>
+• /connections - <code>ʟɪꜱᴛ ᴀʟʟ ʏᴏᴜʀ ᴄᴏɴɴᴇᴄᴛɪᴏɴꜱ</code>"""
 
-    ADMIN_TXT = """<b>ɴᴏᴛᴇ:</b>
-<code>Tʜɪs Mᴏᴅᴜʟᴇ Oɴʟʏ Wᴏʀᴋs Fᴏʀ Mʏ Aᴅᴍɪɴs</code>
-
-🔋 <u><b>Basic Command</b></u>
+    EXTRAMOD_TXT = """ʜᴇʟᴘ: Exᴛʀᴀ Mᴏᴅᴜʟᴇs
+<b>ɴᴏᴛᴇ:</b>
+ᴛʜᴇꜱᴇ ᴀʀᴇ ᴛʜᴇ ᴇxᴛʀᴀ ꜰᴇᴀᴛᴜʀᴇꜱ ᴏꜰ ᴛʜɪꜱ ʙᴏᴛ
+Cᴏᴍᴍᴀɴᴅs Aɴᴅ Usᴀɢᴇ:
+• /id - <code>ɢᴇᴛ ɪᴅ ᴏꜰ ᴀ ꜱᴘᴇᴄɪꜰɪᴇᴅ ᴜꜱᴇʀ.</code>
+• /info  - <code>ɢᴇᴛ ɪɴꜰᴏʀᴍᴀᴛɪᴏɴ ᴀʙᴏᴜᴛ ᴀ ᴜꜱᴇʀ.</code>
+• /imdb  - <code>ɢᴇᴛ ᴛʜᴇ ꜰɪʟᴍ ɪɴꜰᴏʀᴍᴀᴛɪᴏɴ ꜰʀᴏᴍ ɪᴍᴅʙ ꜱᴏᴜʀᴄᴇ.</code>
+• /search  - <code>ɢᴇᴛ ᴛʜᴇ ꜰɪʟᴍ ɪɴꜰᴏʀᴍᴀᴛɪᴏɴ ꜰʀᴏᴍ ᴠᴀʀɪᴏᴜꜱ ꜱᴏᴜʀᴄᴇꜱ.</code>"""
+    
+    ADMIN_TXT = """ʜᴇʟᴘ: Aᴅᴍɪɴ Mᴏᴅs
+<b>ɴᴏᴛᴇ:</b>
+Tʜɪs Mᴏᴅᴜʟᴇ Oɴʟʏ Wᴏʀᴋs Fᴏʀ Mʏ Aᴅᴍɪɴs
+Cᴏᴍᴍᴀɴᴅs Aɴᴅ Usᴀɢᴇ:
 • /logs - <code>ᴛᴏ ɢᴇᴛ ᴛʜᴇ ʀᴇᴄᴇɴᴛ ᴇʀʀᴏʀꜱ</code>
-• /stats - <code>ᴛᴏ ɢᴇᴛ ꜱᴛᴀᴛᴜꜱ ᴏꜰ ꜰɪʟᴇꜱ ɪɴ ᴅʙ.</code>
-
-🗂️ <u><b>Database & Server Command</b></u>
-• /status - <code>ᴛᴏ ɢᴇᴛ sᴛᴀᴛᴜs ᴏғ sᴇʀᴠᴇʀ</code>
-• /stats - <code>ᴛᴏ ɢᴇᴛ ᴅᴀᴛᴀᴛʙᴀꜱᴇ ꜱᴛᴀᴛᴜꜱ</code>
+• /stats - <code>ᴛᴏ ɢᴇᴛ ꜱᴛᴀᴛᴜꜱ ᴏꜰ ꜰɪʟᴇꜱ ɪɴ ᴅʙ. [Tʜɪs Cᴏᴍᴍᴀɴᴅ Cᴀɴ Bᴇ Usᴇᴅ Bʏ Aɴʏᴏɴᴇ]</code>
 • /delete - <code>ᴛᴏ ᴅᴇʟᴇᴛᴇ ᴀ ꜱᴘᴇᴄɪꜰɪᴄ ꜰɪʟᴇ ꜰʀᴏᴍ ᴅʙ.</code>
-• /deleteall - <code>ᴛᴏ ᴅᴇʟᴇᴛᴇ ᴀʟʟ ꜰɪʟᴇs ꜰʀᴏᴍ ᴅʙ.</code>
 • /users - <code>ᴛᴏ ɢᴇᴛ ʟɪꜱᴛ ᴏꜰ ᴍʏ ᴜꜱᴇʀꜱ ᴀɴᴅ ɪᴅꜱ.</code>
 • /chats - <code>ᴛᴏ ɢᴇᴛ ʟɪꜱᴛ ᴏꜰ ᴍʏ ᴄʜᴀᴛꜱ ᴀɴᴅ ɪᴅꜱ</code>
-• /channel - <code>ᴛᴏ ɢᴇᴛ ʟɪꜱᴛ ᴏꜰ ᴛᴏᴛᴀʟ ᴄᴏɴɴᴇᴄᴛᴇᴅ ᴄʜᴀɴɴᴇʟꜱ</code>"""
-
-    US_CHAT_TXT = """<b>ɴᴏᴛᴇ:</b>
-<code>Tʜɪs Mᴏᴅᴜʟᴇ Oɴʟʏ Wᴏʀᴋs Fᴏʀ Mʏ Aᴅᴍɪɴs</code>
-
-📯 <u><b>Chat & User</b></u>
-• /broadcast - <code>ᴛᴏ ʙʀᴏᴀᴅᴄᴀꜱᴛ ᴀ ᴍᴇꜱꜱᴀɢᴇ ᴛᴏ ᴀʟʟ ᴜꜱᴇʀꜱ</code>
-• /group_broadcast - <code>ᴛᴏ ʙʀᴏᴀᴅᴄᴀsᴛ ᴀ ᴍᴇssᴀɢᴇ ᴛᴏ ᴀʟʟ ᴄᴏɴɴᴇᴄᴛᴇᴅ ɢʀᴏᴜᴘs</code>
 • /leave  - <code>ᴛᴏ ʟᴇᴀᴠᴇ ꜰʀᴏᴍ ᴀ ᴄʜᴀᴛ.</code>
 • /disable  -  <code>ᴛᴏ ᴅɪꜱᴀʙʟᴇ ᴀ ᴄʜᴀᴛ.</code>
-• /invite - <code>Tᴏ ɢᴇᴛ ᴛʜᴇ ɪɴᴠɪᴛᴇ ʟɪɴᴋ ᴏғ ᴀɴʏ ᴄʜᴀᴛ ᴡʜᴇʀᴇ ᴛʜᴇ ʙᴏᴛ ɪs ᴀᴅᴍɪɴ.</code>
-• /ban_user  - <code>ᴛᴏ ʙᴀɴ ᴀ ᴜꜱᴇʀ.</code>
-• /unban_user  - <code>ᴛᴏ ᴜɴʙᴀɴ ᴀ ᴜꜱᴇʀ.</code>
-• /restart - <code>Tᴏ Rᴇsᴛᴀʀᴛ ᴀ Bᴏᴛ</code>
-• /usend - <code>Tᴏ Sᴇɴᴅ ᴀ Mᴇssɢᴀᴇ ᴛᴏ Pᴇʀᴛɪᴄᴜʟᴀʀ Usᴇʀ</code>
-• /gsend - <code>Tᴏ Sᴇɴᴅ ᴀ Mᴇssᴀɢᴇ ᴛᴏ Pᴇʀᴛɪᴄᴜʟᴀʀ Cʜᴀᴛ</code>
-
-• /clear_junk - clear all delete account & blocked account in database 
-• /clear_junk_group - clear add removed group or deactivated groups on db"""
-
-    G_FIL_TXT = """<b>ɴᴏᴛᴇ:</b>
-<code>Tʜɪs Mᴏᴅᴜʟᴇ Oɴʟʏ Wᴏʀᴋs Fᴏʀ Mʏ Aᴅᴍɪɴs</code>
-
-🔥 <u><b>Adv Global Filter </b></u>
+• /ban  - <code>ᴛᴏ ʙᴀɴ ᴀ ᴜꜱᴇʀ.</code>
+• /unban  - <code>ᴛᴏ ᴜɴʙᴀɴ ᴀ ᴜꜱᴇʀ.</code>
+• /channel - <code>ᴛᴏ ɢᴇᴛ ʟɪꜱᴛ ᴏꜰ ᴛᴏᴛᴀʟ ᴄᴏɴɴᴇᴄᴛᴇᴅ ᴄʜᴀɴɴᴇʟꜱ</code>
+• /broadcast - <code>ᴛᴏ ʙʀᴏᴀᴅᴄᴀꜱᴛ ᴀ ᴍᴇꜱꜱᴀɢᴇ ᴛᴏ ᴀʟʟ ᴜꜱᴇʀꜱ</code>
+• /grp_broadcast - <code>Tᴏ ʙʀᴏᴀᴅᴄᴀsᴛ ᴀ ᴍᴇssᴀɢᴇ ᴛᴏ ᴀʟʟ ᴄᴏɴɴᴇᴄᴛᴇᴅ ɢʀᴏᴜᴘs.</code>
 • /gfilter - <code>ᴛᴏ ᴀᴅᴅ ɢʟᴏʙᴀʟ ғɪʟᴛᴇʀs</code>
-• /gfilters - <code>ᴛᴏ ᴠɪᴇᴡ ʟɪsᴛ ᴏғ ᴀʟʟ ɢʟᴏʙᴀʟ ғɪʟᴛᴇʀs<code>
+• /gfilters - <code>ᴛᴏ ᴠɪᴇᴡ ʟɪsᴛ ᴏғ ᴀʟʟ ɢʟᴏʙᴀʟ ғɪʟᴛᴇʀs</code>
 • /delg - <code>ᴛᴏ ᴅᴇʟᴇᴛᴇ ᴀ sᴘᴇᴄɪғɪᴄ ɢʟᴏʙᴀʟ ғɪʟᴛᴇʀ</code>
-• /delallg - <code>ᴛᴏ ᴅᴇʟᴇᴛᴇ ᴀʟʟ ɢʟᴏʙᴀʟ ꜰɪʟᴛᴇʀꜱ</code>
+• /request - <code>Tᴏ sᴇɴᴅ ᴀ Mᴏᴠɪᴇ/Sᴇʀɪᴇs ʀᴇᴏ̨ᴜᴇsᴛ ᴛᴏ ʙᴏᴛ ᴀᴅᴍɪɴs. Oɴʟʏ ᴡᴏʀᴋs ᴏɴ sᴜᴘᴘᴏʀᴛ ɢʀᴏᴜᴘ. [Tʜɪs Cᴏᴍᴍᴀɴᴅ Cᴀɴ Bᴇ Usᴇᴅ Bʏ Aɴʏᴏɴᴇ]</code>
+• /delallg - <code>Tᴏ ᴅᴇʟᴇᴛᴇ ᴀʟʟ Gғɪʟᴛᴇʀs ғʀᴏᴍ ᴛʜᴇ ʙᴏᴛ's ᴅᴀᴛᴀʙᴀsᴇ.</code>
+• /deletefiles - <code>Tᴏ ᴅᴇʟᴇᴛᴇ CᴀᴍRɪᴘ ᴀɴᴅ PʀᴇDVD Fɪʟᴇs ғʀᴏᴍ ᴛʜᴇ ʙᴏᴛ's ᴅᴀᴛᴀʙᴀsᴇ.</code>"""
+  
+    STATUS_TXT = """📂 Tᴏᴛᴀʟ Fɪʟᴇꜱ: <code>{}</code>
+👤 Tᴏᴛᴀʟ Uꜱᴇʀꜱ: <code>{}</code>
+♻️ Tᴏᴛᴀʟ Gʀᴏᴜᴩꜱ: <code>{}</code>
+🗃️ DB Sᴛᴏʀᴀɢᴇ: <code>{}</code>
+🆓 Fʀᴇᴇ Sᴛᴏʀᴀɢᴇ: <code>{}</code>"""
+    
+    LOG_TEXT_G = """#NewGroup
+Group = {}(<code>{}</code>)
+Total Members = <code>{}</code>
+Added By - {}
+"""
+    LOG_TEXT_P = """#NewUser
+ID - <code>{}</code>
+Name - {}
+"""
+    GRPMANGA_TXT = """ HEY ʙᴜᴅᴅy,
+I ᴀᴍ ʜᴇʀᴇ ᴛᴏ ʜᴇʟᴘ ʏᴏᴜ ɢᴇᴛ ᴀʀᴏᴜɴᴅ ᴀɴᴅ ᴋᴇᴇᴘ ᴛʜᴇ ᴏʀᴅᴇʀ ɪɴ ʏᴏᴜʀ ɢʀᴏᴜᴘꜱ!"""
+    
+    MATPURGE = """
+**ᴘᴜʀɢᴇ**  
+
+• /purge: ᴅᴇʟᴇᴛᴇꜱ ᴍᴇꜱꜱᴀɢᴇꜱ ᴜᴘᴛᴏ ʀᴇᴘʟɪᴇᴅ ᴍᴇꜱꜱᴀɢᴇ. 
+• /spurge: ᴅᴇʟᴇᴛᴇꜱ ᴍᴇꜱꜱᴀɢᴇꜱ ᴜᴘᴛᴏ ʀᴇᴘʟɪᴇᴅ ᴍᴇꜱꜱᴀɢᴇ ᴡɪᴛʜᴏᴜᴛ ᴀ ꜱᴜᴄᴄᴇꜱꜱ ᴍᴇꜱꜱᴀɢᴇ. 
+• /del: ᴅᴇʟᴇᴛᴇꜱ ᴀ ꜱɪɴɢʟᴇ ᴍᴇꜱꜱᴀɢᴇ, ᴜꜱᴇᴅ ᴀꜱ ᴀ ʀᴇᴘʟʏ ᴛᴏ ᴍᴇꜱꜱᴀɢᴇ"""
+
+    MATAI = """ <b>ꜱᴘᴇᴄɪᴀʟ ᴄʜᴀᴛ ɢᴘᴛ</b>
+
+ᴄᴏᴍᴍᴀɴᴅ ɪꜱ '/openai'
+ᴛʜɪꜱ ꜰᴇᴀᴛᴜʀᴇ ᴄᴀɴ ᴏɴʟʏ ᴜꜱᴇ ɪɴ @ᴍʟᴢ_ʙᴏᴛᴢ_ꜱᴜᴘᴘᴏʀᴛ ᴅᴏ ᴏɴᴇ ᴛʜɪꜱ ᴊᴏɪɴ ᴛʜᴀᴛ ᴄʜᴀᴛ ᴇɴᴊᴏʏ ɢᴘᴛ"""
+
+    MATFSUB = """ɢɪᴠᴇ ᴀɴ ɪɴᴘᴜᴛ ʟɪᴋᴇ /fsub {ᴄʜᴀɴɴᴇʟ ɪᴅ ᴏʀ ʟɪɴᴋ ᴏʀ ᴜꜱᴇʀɴᴀᴍᴇ}   
+<b>ɴᴏᴛᴇ❗</b> *ʙᴏᴛ ᴍᴜꜱᴛ ʙᴇ ᴀᴅᴍɪɴ ɪɴ ᴛʜᴀᴛ ᴄʜᴀɴɴᴇʟ *ᴜꜱᴇ ᴛʜɪꜱ ᴄᴏᴍᴍᴀɴᴅ ᴏɴʟʏ ɪɴ ɢʀᴏᴜᴘ """
+
+    MATSTICKER = """<b>ᴜꜱᴇʀ ᴄᴏᴍᴍᴀɴᴅꜱ:</b>      
+• /ᴋᴀɴɢ (/ꜱᴛᴇᴀʟ) <ᴇᴍᴏᴊɪ>: ʀᴇᴘʟʏ ᴛᴏ ᴀ ꜱᴛɪᴄᴋᴇʀ ᴏʀ ᴀɴʏ ꜱᴜᴘᴘᴏʀᴛᴇᴅ ᴍᴇᴅɪᴀ 
+• /ꜱᴛɪᴄᴋᴇʀɪɴꜰᴏ (/ꜱᴛɪɴꜰᴏ) : ʀᴇᴘʟʏ ᴛᴏ ᴀɴʏ ꜱᴛɪᴄᴋᴇʀ ᴛᴏ ɢᴇᴛ ɪᴛ'ꜱ ɪɴꜰᴏ 
+• /ɢᴇᴛꜱᴛɪᴄᴋᴇʀ (/ɢᴇᴛꜱᴛ) : ɢᴇᴛ ꜱᴛɪᴄᴋᴇʀ ᴀꜱ ᴘʜᴏᴛᴏ ᴏʀ ᴠɪᴄᴇ ᴠᴇʀꜱᴀ. 
+• /ꜱᴛɪᴄᴋᴇʀɪᴅ (/ꜱᴛɪᴅ) : ʀᴇᴘʟʏ ᴛᴏ ᴀɴʏ ꜱᴛɪᴄᴋᴇʀ ᴛᴏ ɢᴇᴛ ɪᴛ'ꜱ ɪᴅ 
+• /ᴍᴍꜰ <ʏᴏᴜʀ ᴛᴇxᴛ>: ʀᴇᴘʟʏ ᴛᴏ ᴀ ɴᴏʀᴍᴀʟ ꜱᴛɪᴄᴋᴇʀ ᴏʀ ᴀ ᴘʜᴏᴛᴏ ᴏʀ ᴠɪᴅᴇᴏ ꜰɪʟᴇ ᴛᴏ ᴍᴇᴍɪꜰʏ ɪᴛ. 
+ɪꜰ ʏᴏᴜ ᴡᴀɴᴛ ᴛᴏ ʀɪɢʜᴛ ᴛᴇxᴛ ᴀᴛ ʙᴏᴛᴛᴏᴍ ᴜꜱᴇ `;ʀɪɢʜᴛ ʏᴏᴜʀ ᴍᴇꜱꜱᴀɢᴇ`
+■ ꜰᴏʀ ᴇ.ɢ:      
+○ /ᴍᴍꜰ ʜᴇʟʟᴏ ꜰʀᴇɪɴᴅꜱ : ᴛʜɪꜱ ᴡɪʟʟ ᴀᴅᴅ ᴛᴇxᴛ ᴛᴏ ᴛʜᴇ ᴛᴏᴘ     
+○ /ᴍᴍꜰ ʜᴇʟʟᴏ ; ꜰʀᴇɪɴᴅꜱ : ᴛʜɪꜱ ᴡɪʟʟ ᴀᴅᴅ ʜᴇʟʟᴏ ᴛᴏ ᴛʜᴇ ᴛᴏᴘ ᴀɴᴅ ꜰʀᴇɪɴᴅꜱ ᴀᴛ ᴛʜᴇ ʙᴏᴛᴛᴏᴍ     
+○ /ᴍᴍꜰ ; ʜᴇʟʟᴏ ꜰʀɪᴇɴᴅꜱ : ᴛʜɪꜱ ᴡɪʟʟ ᴀᴅᴅ ᴛᴇxᴛ ᴀᴛ ᴛʜᴇ ʙᴏᴛᴛᴏᴍ     
+○ /ᴍᴍꜰʙ <ᴛᴇxᴛ>: ᴛᴏ ꜰɪʟʟ ᴛᴇxᴛ ᴡɪᴛʜ ʙʟᴀᴄᴋ ᴄᴏʟᴏᴜʀ     
+○ /ᴍᴍꜰᴡ ᴏʀ /ᴍᴍꜰ <ᴛᴇxᴛ>: ᴛᴏ ꜰɪʟʟ ɪᴛ ᴡɪᴛʜ ᴡʜɪᴛᴇ ᴄᴏʟᴏᴜʀ  
+
+<ʙ>ɴᴏᴛᴇ</ʙ>
+
+ᴍᴍꜰ ᴀɴᴅ ɢᴇᴛꜱᴛɪᴄᴋᴇʀ ᴏɴʟʏ ꜱᴜᴘᴘᴏʀᴛ ᴘʜᴏᴛᴏ ᴀɴᴅ ɴᴏʀᴍᴀʟ ꜱᴛɪᴄᴋᴇʀꜱ ꜰᴏʀ ɴᴏᴡ.
 """
 
-    STATUS_TXT = """<b>᚛› 𝚃𝙾𝚃𝙰𝙻 𝙵𝙸𝙻𝙴𝚂: <code>{}</code></b>
-<b>᚛› 𝚃𝙾𝚃𝙰𝙻 𝚄𝚂𝙴𝚁𝚂: <code>{}</code></b>
-<b>᚛› 𝚃𝙾𝚃𝙰𝙻 𝙲𝙷𝙰𝚃𝚂: <code>{}</code></b>
-<b>᚛› 𝚄𝚂𝙴𝙳 𝚂𝚃𝙾𝚁𝙰𝙶𝙴: <code>{}</code> 𝙼𝙱</b>
-<b>᚛› 𝙵𝚁𝙴𝙴 𝚂𝚃𝙾𝚁𝙰𝙶𝙴: <code>{}</code> 𝙼𝙱</b>"""
-    LOG_TEXT_G = """#𝐍𝐞𝐰𝐆𝐫𝐨𝐮𝐩
+    MATMORE = """ <b>ᴜꜱᴇʀ ᴄᴏᴍᴍᴀɴᴅꜱ:</b>     
+/ɢɪᴛʜᴜʙ - ᴛᴏ ɢᴇᴛ ɢɪᴛʜᴜʙ ᴜꜱᴇʀ ɪɴꜰᴏ     
+/ʀᴇᴘᴏ - ᴛᴏ ɢᴇᴛ ɢɪᴛʜᴜʙ ᴘᴜʙ ʀᴇᴘᴏ     
+/ʟʏʀɪᴄꜱ - ᴛᴏ ɢᴇᴛ ʟʏʀɪᴄꜱ ᴏꜰ ꜱᴏɴɢ     
+/ᴛᴇʟᴇɢʀᴀᴘʜ - ᴘʜᴏᴛᴏ ᴛᴏ ʟɪɴᴋ     
+/ᴡʀɪᴛᴇ - ᴛᴏ ᴡʀɪᴛᴇ ᴀ ᴛᴇxᴛ ɪɴ ᴘᴀᴘᴇʀ """
     
-<b>᚛› 𝐆𝐫𝐨𝐮𝐩 ⪼ {a}(<code>{b}</code>)</b>
-<b>᚛› 𝐆 𝐈𝐃 ⪼ @{c}
-<b>᚛› 𝐓𝐨𝐭𝐚𝐥 𝐌𝐞𝐦𝐛𝐞𝐫𝐬 ⪼ {d}</b>
-<b>᚛› 𝐀𝐝𝐝𝐞𝐝 𝐁𝐲 ⪼ {e}</b>
-
-By {f}
-"""
-    LOG_TEXT_P = """#𝐍𝐞𝐰𝐔𝐬𝐞𝐫
+    MATREPORT = """ <b>ʀᴇᴘᴏʀᴛ</b>
     
-<b>᚛› 𝐈𝐃 - <code>{}</code></b>
-<b>᚛› 𝐍𝐚𝐦𝐞 - {}</b>
-<b>᚛› 𝐔𝐍 - @{}</b>
+ᴘʀᴇꜱᴇɴᴛɪɴɢ ʀᴇᴘᴏʀᴛꜱ; ɪꜰ ꜱᴏᴍᴇᴏɴᴇ ɪɴ ʏᴏᴜʀ ɢʀᴏᴜᴘ ᴛʜɪɴᴋꜱ ꜱᴏᴍᴇᴏɴᴇ ɴᴇᴇᴅꜱ ʀᴇᴘᴏʀᴛɪɴɢ, ᴛʜᴇʏ ɴᴏᴡ ʜᴀᴠᴇ ᴀɴ ᴇᴀꜱʏ ᴡᴀʏ ᴛᴏ ᴄᴀʟʟ ᴀʟʟ ᴀᴅᴍɪɴꜱ.
 
-By @{} """
-   
-    ZOMBIES_TXT = """𝙷𝙴𝙻𝙿 𝚈𝙾𝚄 𝚃𝙾 𝙺𝙸𝙲𝙺 𝚄𝚂𝙴𝚁𝚂
+ <b>ᴍᴇᴍʙᴇʀꜱ</b> 
 
-<b>Kick incative members from group. Add me as admin with ban users permission in group.</b>
+- @ᴀᴅᴍɪɴ: ʀᴇᴘʟʏ ᴛᴏ ᴀ ᴍᴇꜱꜱᴀɢᴇ ᴛᴏ ʀᴇᴘᴏʀᴛ ɪᴛ ꜰᴏʀ ᴀᴅᴍɪɴꜱ ᴛᴏ ʀᴇᴠɪᴇᴡ. 
+- @ᴀᴅᴍɪɴꜱ: ꜱᴀᴍᴇ ᴀꜱ /ʀᴇᴘᴏʀᴛ  ᴛᴏ ʀᴇᴘᴏʀᴛ ᴀ ᴜꜱᴇʀ, 
+ꜱɪᴍᴘʟʏ ʀᴇᴘʟʏ ᴛᴏ ʜɪꜱ ᴍᴇꜱꜱᴀɢᴇ ᴡɪᴛʜ @ᴀᴅᴍɪɴ ᴏʀ /ʀᴇᴘᴏʀᴛ; 
+ɪ ᴡɪʟʟ ᴛʜᴇʀᴇ ᴛʜᴇ ᴀ ᴍᴇꜱꜱᴀɢᴇ ꜱᴛᴀᴛɪɴɢ ᴛʜᴀᴛ ᴀᴅᴍɪɴꜱ ʜᴀᴠᴇ ʙᴇᴇɴ ɴᴏᴛɪꜰɪᴇᴅ. 
+ᴛʜɪꜱ ᴍᴇꜱꜱᴀɢᴇ ɴᴏᴛɪꜰɪᴇꜱ ᴀʟʟ ᴛʜᴇ ᴄʜᴀᴛ ᴀᴅᴍɪɴꜱ  
 
-<b>Commands and Usage:</b>
-• /inkick - command with required arguments and i will kick members from group.
-• /instatus - to check current status of chat member from group.
-• /inkick within_month long_time_ago - to kick users who are offline for more than 6-7 days.
-• /inkick long_time_ago - to kick members who are offline for more than a month and Deleted Accounts.
-• /dkick - to kick deleted accounts."""
-
-    IMAGE_TXT = """➤ 𝐇𝐞𝐥𝐩: Iᴍᴀɢᴇ
-
-𝚃𝚑𝚒𝚜 𝚌𝚘𝚖𝚖𝚊𝚗𝚍 𝚑𝚎𝚕𝚙𝚜 𝚢𝚘𝚞 𝚝𝚘 𝚎𝚍𝚒𝚝 𝚒𝚖𝚊𝚐𝚎 𝚟𝚎𝚛𝚢 𝚎𝚊𝚜𝚒𝚕𝚢 
-
-➤ 𝐂𝐨𝐦𝐦𝐚𝐧𝐝𝐬 𝐚𝐧𝐝 𝐔𝐬𝐚𝐠𝐞:
-
-➪ 𝖩𝗎𝗌𝗍 𝗌𝖾𝗇𝖽 𝗆𝖾 𝖺 𝗂𝗆𝖺𝗀𝖾 𝗍𝗈 𝖾𝖽𝗂𝗍 ✨
-
-𝖬𝖺𝖽𝖾 𝖻𝗒 <a href=https://t.me/mr_MKN>Mr.MKN TG</a>"""
-
-    RESTRIC_TXT = """➤ 𝐇𝐞𝐥𝐩: Mᴜᴛᴇ 🚫
-
-𝚃𝚑𝚎𝚜𝚎 𝚊𝚛𝚎 𝚝𝚑𝚎 𝚌𝚘𝚖𝚖𝚊𝚗𝚍𝚜 𝚊 𝚐𝚛𝚘𝚞𝚙 𝚊𝚍𝚖𝚒𝚗 𝚌𝚊𝚗 𝚞𝚜𝚎 𝚝𝚘 𝚖𝚊𝚗𝚊𝚐𝚎 𝚝𝚑𝚎𝚒𝚛 𝚐𝚛𝚘𝚞𝚙 𝚖𝚘𝚛𝚎 𝚎𝚏𝚏𝚒𝚌𝚒𝚎𝚗𝚝𝚕𝚢.
-
-➪/ban: 𝖳𝗈 𝖻𝖺𝗇 𝖺 𝗎𝗌𝖾𝗋 𝖿𝗋𝗈𝗆 𝗍𝗁𝖾 𝗀𝗋𝗈𝗎𝗉.
-➪/unban: 𝖳𝗈 𝗎𝗇𝖻𝖺𝗇 𝖺 𝗎𝗌𝖾𝗋 𝗂𝗇 𝗍𝗁𝖾 𝗀𝗋𝗈𝗎𝗉.
-➪/tban: 𝖳𝗈 𝗍𝖾𝗆𝗉𝗈𝗋𝖺𝗋𝗂𝗅𝗒 𝖻𝖺𝗇 𝖺 𝗎𝗌𝖾𝗋.
-➪/mute: 𝖳𝗈 𝗆𝗎𝗍𝖾 𝖺 𝗎𝗌𝖾𝗋 𝗂𝗇 𝗍𝗁𝖾 𝗀𝗋𝗈𝗎𝗉.
-➪/unmute: 𝖳𝗈 𝗎𝗇𝗆𝗎𝗍𝖾 𝖺 𝗎𝗌𝖾𝗋 𝗂𝗇 𝗍𝗁𝖾 𝗀𝗋𝗈𝗎𝗉.
-➪/tmute: 𝖳𝗈 𝗍𝖾𝗆𝗉𝗈𝗋𝖺𝗋𝗂𝗅𝗒 𝗆𝗎𝗍𝖾 𝖺 𝗎𝗌𝖾𝗋.
-
-➤ 𝖭𝗈𝗍𝖾:
-𝖶𝗁𝗂𝗅𝖾 𝗎𝗌𝗂𝗇𝗀 /tmute 𝗈𝗋 /tban 𝗒𝗈𝗎 𝗌𝗁𝗈𝗎𝗅𝖽 𝗌𝗉𝖾𝖼𝗂𝖿𝗒 𝗍𝗁𝖾 𝗍𝗂𝗆𝖾 𝗅𝗂𝗆𝗂𝗍.
-
-➛𝖤𝗑𝖺𝗆𝗉𝗅𝖾: /𝗍𝖻𝖺𝗇 2𝖽 𝗈𝗋 /𝗍𝗆𝗎𝗍𝖾 2𝖽.
-𝖸𝗈𝗎 𝖼𝖺𝗇 𝗎𝗌𝖾 𝗏𝖺𝗅𝗎𝖾𝗌: 𝗆/𝗁/𝖽. 
- • 𝗆 = 𝗆𝗂𝗇𝗎𝗍𝖾𝗌
- • 𝗁 = 𝗁𝗈𝗎𝗋𝗌
- • 𝖽 = 𝖽𝖺𝗒𝗌"""
-
-
-    PIN_TXT ="""<b>PIN MODULE</b>
-<b>𝙿𝙸𝙽 𝙰 𝙼𝙴𝚂𝚂𝙰𝙶𝙴../</b>
-
-<b>𝙰𝙻𝙻 𝚃𝙷𝙴 𝙿𝙸𝙽 𝚁𝙴𝙿𝙻𝙰𝚃𝙴𝙳 𝙲𝙾𝙼𝙼𝙰𝙽𝙳𝚂 𝙲𝙰𝙽 𝙱𝙴 𝙵𝙾𝚄𝙽𝙳 𝙷𝙴𝚁𝙴::</b>
-
-<b>📌𝙲𝙾𝙼𝙼𝙰𝙽𝙳𝚂 𝙰𝙽𝙳 𝚄𝚂𝙰𝙶𝙴📌</b>
-
-◉ /pin :- 𝚃𝙾 𝙿𝙸𝙽 𝚃𝙷𝙴 𝙼𝙴𝚂𝚂𝙰𝙶𝙴 𝙾𝙽 𝚈𝙾𝚄𝚁 𝙲𝙷𝙰𝚃𝚂
-◉ /unpin :- 𝚃𝙾 𝚄𝙽𝙿𝙸𝙽 𝚃𝙷𝙴 𝙲𝚄𝚁𝚁𝙴𝙴𝙽𝚃 𝙿𝙸𝙽𝙽𝙴𝙳 𝙼𝙴𝚂𝙰𝙰𝙶𝙴"""
-
-    PASTE_TXT = """Help: <b>Paste</b>
-
-Paste some texts or documents on a website!
-
-<b>Commands and Usage:</b>
-
-• /paste [text] - paste the given text on Pasty
-
-<b>NOTE:</b>
-
-• These commands works on both pm and group.
-• These commands can be used by any group member."""
-
-    TTS_TXT = """Help: <b> TTS 🎤 module:</b>
-
-Translate text to speech
-
-<b>Commands and Usage:</b>
-
-• /tts <text> : convert text to speech
-
-<b>NOTE:</b>
-
-• IMDb should have admin privillage.
-• These commands works on both pm and group.
-• IMDb can translate texts to 200+ languages."""
-
-    PINGS_TXT ="""<b>🌟 Ping:</b>
-
-Helps you to know your ping 🚶🏼‍♂️
-
-<b>Commands:</b>
-
-• /alive - To check you are alive.
-• /ping - To get your ping.
-<b>🏹Usage🏹 :</b>
-
-• This commands can be used in pms and groups
-• This commands can be used buy everyone in the groups and bots pm
-• Share us for more features"""
-
-    TELE_TXT = """<b>▫️HELP: Telegraph▪️</b>
-
-Do as you wish with telegra.ph module!
-
-</b>USAGE:</b>
-
-🤧 /telegraph - Send me this command reply with Picture or Vide Under (5MB) 
-
-<b>NOTE:</b>
-
-• This Command Is Available in goups and pms
-• This Command Can be used by everyone"""
-
-    JSON_TXT ="""<b>JSON:</b>
-
-Bot returns json for all replied messages with /json
-
-<b>Features:</b>
-
-Message Editting JSON
-Pm Support
-Group Support
-
-<b>Note:</b>
-
-Everyone can use this command , if spaming happens bot will automatically ban you from the group."""
-
-    PURGE_TXT = """<b>Purge</b>
+    MATWELCOME = """ <b>ᴡᴇʟᴄᴏᴍᴇ</b>
     
-Delete A Lot Of Messages From Groups! 
+ʏᴏᴜ ᴄᴀɴ ꜱᴇᴛ ᴍᴀɴɴᴜᴀʟ ᴡᴇʟᴄᴏᴍᴇ ᴛᴇxᴛ ɢʀᴏᴜᴘꜱ!    
+
+**ᴀᴅᴍɪɴ ᴄᴏᴍᴍᴀɴᴅꜱ:** 
+• /ꜱᴇᴛᴡᴇʟᴄᴏᴍᴇ <ʀᴇᴘʟʏ> : ꜱᴇᴛꜱ ᴀ ᴄᴜꜱᴛᴏᴍ ᴡᴇʟᴄᴏᴍᴇ ᴍᴇꜱꜱᴀɢᴇ. 
+• /ꜱᴇᴛɢᴏᴏᴅʙʏᴇ <ʀᴇᴘʟʏ> : ꜱᴇᴛꜱ ᴀ ᴄᴜꜱᴛᴏᴍ ɢᴏᴏᴅʙʏᴇ ᴍᴇꜱꜱᴀɢᴇ. 
+• /ʀᴇꜱᴇᴛᴡᴇʟᴄᴏᴍᴇ : ʀᴇꜱᴇᴛꜱ ᴛᴏ ʙᴏᴛ ᴅᴇꜰᴀᴜʟᴛ ᴡᴇʟᴄᴏᴍᴇ ᴍᴇꜱꜱᴀɢᴇ. 
+• /ʀᴇꜱᴇᴛɢᴏᴏᴅʙʏᴇ : ʀᴇꜱᴇᴛꜱ ᴛᴏ ʙᴏᴛ ᴅᴇꜰᴀᴜʟᴛ ɢᴏᴏᴅʙʏᴇ ᴍᴇꜱꜱᴀɢᴇ. 
+• /ᴡᴇʟᴄᴏᴍᴇ <ᴏɴ/ᴏꜰꜰ> | ɴᴏꜰᴏʀᴍᴀᴛ : ᴇɴᴀʙʟᴇ/ᴅɪꜱᴀʙʟᴇ | ꜱʜᴏᴡꜱ ᴛʜᴇ ᴄᴜʀʀᴇɴᴛ ᴡᴇʟᴄᴏᴍᴇ ᴍᴇꜱꜱᴀɢᴇ | ꜱᴇᴛᴛɪɴɢꜱ. 
+• /ɢᴏᴏᴅʙʏᴇ <ᴏɴ/ᴏꜰꜰ> | ɴᴏꜰᴏʀᴍᴀᴛ : ᴇɴᴀʙʟᴇ/ᴅɪꜱᴀʙʟᴇ | ꜱʜᴏᴡꜱ ᴛʜᴇ ᴄᴜʀʀᴇɴᴛ ɢᴏᴏᴅʙʏᴇ ᴍᴇꜱꜱᴀɢᴇ | ꜱᴇᴛᴛɪɴɢꜱ. 
+• /ᴄʟᴇᴀɴᴡᴇʟᴄᴏᴍᴇ <ᴏɴ/ᴏꜰꜰ> : ꜱʜᴏᴡꜱ ᴏʀ ꜱᴇᴛꜱ ᴛʜᴇ ᴄᴜʀʀᴇɴᴛ ᴄʟᴇᴀɴ ᴡᴇʟᴄᴏᴍᴇ ꜱᴇᴛᴛɪɴɢꜱ. 
+• /ᴄʟᴇᴀɴɢᴏᴏᴅʙʏᴇ <ᴏɴ/ᴏꜰꜰ> : ꜱʜᴏᴡꜱ ᴏʀ ꜱᴇᴛꜱ ᴛʜᴇ ᴄᴜʀʀᴇɴᴛ ᴄʟᴇᴀɴ ɢᴏᴏᴅʙʏᴇ ꜱᴇᴛᴛɪɴɢꜱ.  
+
+**ᴄʟᴇᴀɴᴇʀ:** 
+• /ᴄʟᴇᴀɴꜱᴇʀᴠɪᴄᴇ <ᴏɴ/ᴏꜰꜰ> : ᴜꜱᴇ ɪᴛ ᴛᴏ ᴄʟᴇᴀɴ ᴀʟʟ ꜱᴇʀᴠɪᴄᴇ ᴍᴇꜱꜱᴀɢᴇꜱ ᴀᴜᴛᴏᴍᴀᴛɪᴄᴀʟʟʏ ᴏʀ ᴛᴏ ᴠɪᴇᴡ ᴄᴜʀʀᴇɴᴛ ꜱᴛᴀᴛᴜꜱ."""
+    MATPIN = """ <b>ᴘɪɴ</b>
     
+ʏᴏᴜ ᴄᴀɴ ᴘɪɴ ᴛᴇxᴛ,ᴍᴇᴅɪᴀ,ᴇᴛᴄ ɪɴ ɢʀᴏᴜᴘꜱ!
+
+ <b>ᴀᴅᴍɪɴ</b> 
+ 
+- /ᴘɪɴ: ᴘɪɴ ᴛʜᴇ ᴍᴇꜱꜱᴀɢᴇ ʏᴏᴜ ʀᴇᴘʟɪᴇᴅ ᴛᴏ. ᴀᴅᴅ 'ʟᴏᴜᴅ' ᴏʀ 'ɴᴏᴛɪꜰʏ' ᴛᴏ ꜱᴇɴᴅ ᴀ ɴᴏᴛɪꜰɪᴄᴀᴛɪᴏɴ ᴛᴏ ɢʀᴏᴜᴘ ᴍᴇᴍʙᴇʀꜱ. 
+- /ᴜɴᴘɪɴ: ᴜɴᴘɪɴ ᴛʜᴇ ᴄᴜʀʀᴇɴᴛ ᴘɪɴɴᴇᴅ ᴍᴇꜱꜱᴀɢᴇ. ɪꜰ ᴜꜱᴇᴅ ᴀꜱ ᴀ ʀᴇᴘʟʏ, ᴜɴᴘɪɴꜱ ᴛʜᴇ ʀᴇᴘʟɪᴇᴅ ᴛᴏ ᴍᴇꜱꜱᴀɢᴇ."""
+    
+    MATLOCK = """
+**ʟᴏᴄᴋꜱ**  
+ᴜꜱᴇ ᴛʜɪꜱ ᴛᴏ ʟᴏᴄᴋ ɢʀᴏᴜᴘ ᴘᴇʀᴍɪꜱꜱɪᴏɴꜱ. 
+ᴀʟʟᴏᴡꜱ ʏᴏᴜ ᴛᴏ ʟᴏᴄᴋ ᴀɴᴅ ᴜɴʟᴏᴄᴋ ᴘᴇʀᴍɪꜱꜱɪᴏɴ ᴛʏᴘᴇꜱ ɪɴ ᴛʜᴇ ᴄʜᴀᴛ.  
+
+**ᴜꜱᴀɢᴇ:** • /ʟᴏᴄᴋ `<ᴛʏᴘᴇ>`: ʟᴏᴄᴋ ᴄʜᴀᴛ ᴘᴇʀᴍɪꜱꜱɪᴏɴ. 
+• /ᴜɴʟᴏᴄᴋ `<ᴛʏᴘᴇ>`: ᴜɴʟᴏᴄᴋ ᴄʜᴀᴛ ᴘᴇʀᴍɪꜱꜱɪᴏɴ. 
+• /ʟᴏᴄᴋꜱ: ᴠɪᴇᴡ ᴄʜᴀᴛ ᴘᴇʀᴍɪꜱꜱɪᴏɴ. 
+• /ʟᴏᴄᴋᴛʏᴘᴇꜱ: ᴄʜᴇᴄᴋ ᴀᴠᴀɪʟᴀʙʟᴇ ʟᴏᴄᴋ ᴛʏᴘᴇꜱ!  
+
+**ᴇxᴀᴍᴘʟᴇ:** 
+`/ʟᴏᴄᴋ ᴍᴇᴅɪᴀ`: ᴛʜɪꜱ ʟᴏᴄᴋꜱ ᴀʟʟ ᴛʜᴇ ᴍᴇᴅɪᴀ ᴍᴇꜱꜱᴀɢᴇꜱ ɪɴ ᴛʜᴇ ᴄʜᴀᴛ."""
+    
+    MATMUTE = """ <b>Mute</b>
+    
+This module allows you to do that easily
+
  <b>ADMIN</b> 
-
-◉ /purge :- Delete All Messages From The Replied To Message, To The Current Message"""
-
-    CREATOR_REQUIRED = """❗<b>You have To Be The Group Creator To Do That.</b>"""
-      
-    INPUT_REQUIRED = "❗ **Arguments Required**"
-      
-    KICKED = """✔️ Successfully Kicked {} Members According To The Arguments Provided."""
-      
-    START_KICK = """🚮 Removing Inactive Members This May Take A While..."""
-      
-    ADMIN_REQUIRED = """❗<b>എന്നെ Admin ആക്കത്ത സ്ഥലത്ത് ഞാൻ നിക്കില്ല പോകുവാ Bii..Add Me Again with all admin rights.</b>"""
-      
-    DKICK = """✔️ Kicked {} Deleted Accounts Successfully."""
-      
-    FETCHING_INFO = """<b>ഇപ്പൊ എല്ലാം അടിച്ചുമാറ്റി തരാം...</b>"""
-      
-    CARB_TXT = """☾︎𝗛𝗘𝗟𝗣 𝗙𝗢𝗥 𝗖𝗔𝗥𝗕𝗢𝗡☽︎
-𝙲𝙰𝚁𝙱𝙾𝙽 𝙸𝚂 𝙰 𝙵𝙴𝚄𝚃𝚄𝚁𝙴 𝚃𝙾 𝙼𝙰𝙺𝙴 𝚃𝙷𝙴 𝙸𝙼𝙰𝙶𝙴 𝙰𝚂 𝚂𝙷𝙾𝚆𝙽 𝙸𝙽 𝚃𝙷𝙴 𝚃𝙾𝙿 𝚆𝙸𝚃𝙷 𝚈𝙾𝚄𝚁𝙴 𝚃𝙴𝚇𝚃𝚂.
-𝙵𝙾𝚁 𝚄𝚂𝙸𝙽𝙶 𝚃𝙷𝙴 𝙼𝙾𝙳𝚄𝙻𝙴 𝙹𝚄𝚂𝚃 𝚂𝙴𝙽𝙳 𝚃𝙷𝙴 𝚃𝙴𝚇𝚃 𝙰𝙽𝙳 𝚁𝙴𝙿𝙻𝚈 𝚃𝙾 𝙸𝚃 𝚆𝙸𝚃𝙷 /carbon 𝙲𝙾𝙼𝙼𝙰𝙽𝙳 𝚃𝙷𝙴 𝙱𝙾𝚃 𝚆𝙸𝙻𝙻 𝚁𝙴𝙿𝙻𝚈 𝚆𝙸𝚃𝙷 𝚃𝙷𝙴 𝙲𝙰𝚁𝙱𝙾𝙽 𝙸𝙼𝙰𝙶𝙴"""
-
-    FOND_TXT = """☾︎𝗛𝗘𝗟𝗣 𝗙𝗢𝗥 𝗙𝗢𝗡𝗧𝗦☽︎
-𝙵𝙾𝙽𝚃 𝙸𝚂 𝙰 𝙼𝙾𝙳𝚄𝙻𝙴 𝙵𝙾𝚁 𝙼𝙰𝙺𝙴 𝚈𝙾𝚄𝚁 𝚃𝙴𝚇𝚃 𝚂𝚃𝚈𝙻𝙸𝚂𝙷.
-𝙵𝙾𝚁 𝚄𝚂𝙴 𝚃𝙷𝙰𝚃 𝙵𝙴𝚄𝚃𝚄𝚁𝙴 𝚃𝚈𝙿𝙴 /font <your text> 𝚃𝙷𝙴𝙽 𝚈𝙾𝚄𝚁 𝚃𝙴𝚇𝚃 𝙸𝚂 𝚁𝙴𝙰𝙳𝚈."""
-
-    SHARE_TXT = """☾︎𝗛𝗘𝗟𝗣 𝗙𝗢𝗥 𝗦𝗛𝗔𝗥𝗘 𝗧𝗘𝗫𝗧☽︎
-
-➤ 𝐂𝐨𝐦𝐦𝐚𝐧𝐝𝐬 𝐚𝐧𝐝 𝐔𝐬𝐚𝐠𝐞:
-• /share - 𝚁𝚎𝚙𝚕𝚢 𝚆𝚒𝚝𝚑 𝙰𝚗𝚢 𝚃𝚎𝚡𝚝 𝚃𝚘 𝚂𝚎𝚗𝚍 𝚃𝚑𝚒𝚜 𝙲𝚘𝚖𝚖𝚊𝚗𝚍 """
-
-    YTDL = """<b>𝚈𝙾𝚄𝚃𝚄𝙱𝙴 𝙳𝙾𝚆𝙽𝙻𝙾𝙰𝙳 𝙼𝙾𝙳𝚄𝙻𝙴</b>
-
-🍁 𝘜𝘴𝘢𝘨𝘦
-𝘠𝘰𝘶 𝘊𝘢𝘯 𝘋𝘰𝘸𝘯𝘭𝘰𝘢𝘥 𝘈𝘯𝘺 𝘝𝘪𝘥𝘦𝘰 𝘖𝘳 𝘈𝘶𝘥𝘪𝘰 𝘍𝘳𝘰𝘮 𝘠𝘰𝘶𝘵𝘶𝘣𝘦
-
-𝙃𝙤𝙬 𝙏𝙤 𝙐𝙨𝙚
-• /song 𝚂𝙾𝙽𝙶 𝙽𝙰𝙼𝙴 
-• /video or /mp4 𝘈𝘯𝘥 https://youtu.be/*****
-
-• 𝘌𝘹𝘢𝘮𝘱𝘭𝘦:
-<code>/song mkn</code>
-<code>/mp4 https://youtu.be/*******</code>
-<code>/video https://youtu.be/*****</code>  """
-
-
     
-
-
+- /mute: Mute a user.
+- /dmute: Mute a user by reply, and delete their message.
+- /smute: Silently mute a user, and delete your message.
+- /tmute: Temporarily mute a user. Example time values: 4m = 4 minutes, 3h = 3 hours, 6d = 6 days, 5w = 5 weeks.
+- /unmute: Unmute a user."""
     
+    MATBAN = """ <b>ʙᴀɴ</b>
+    
+ᴛʜɪꜱ ᴍᴏᴅᴜʟᴇ ᴀʟʟᴏᴡꜱ ʏᴏᴜ ᴛᴏ ᴅᴏ ᴛʜᴀᴛ ᴇᴀꜱɪʟʏ
 
+ <b>ᴀᴅᴍɪɴ</b> 
+    
+- /ʙᴀɴ: ʙᴀɴ ᴀ ᴜꜱᴇʀ. 
+- /ᴅʙᴀɴ: ʙᴀɴ ᴀ ᴜꜱᴇʀ ʙʏ ʀᴇᴘʟʏ, ᴀɴᴅ ᴅᴇʟᴇᴛᴇ ᴛʜᴇɪʀ ᴍᴇꜱꜱᴀɢᴇ. 
+- /ꜱʙᴀɴ: ꜱɪʟᴇɴᴛʟʏ ʙᴀɴ ᴀ ᴜꜱᴇʀ, ᴀɴᴅ ᴅᴇʟᴇᴛᴇ ʏᴏᴜʀ ᴍᴇꜱꜱᴀɢᴇ. 
+- /ᴛʙᴀɴ: ᴛᴇᴍᴘᴏʀᴀʀɪʟʏ ʙᴀɴ ᴀ ᴜꜱᴇʀ. 
+- ᴇxᴀᴍᴘʟᴇ ᴛɪᴍᴇ ᴠᴀʟᴜᴇꜱ: 4ᴍ = 4 ᴍɪɴᴜᴛᴇꜱ,
+3ʜ = 3 ʜᴏᴜʀꜱ,
+6ᴅ = 6 ᴅᴀʏꜱ,
+5ᴡ = 5 ᴡᴇᴇᴋꜱ.
+
+- /ᴜɴʙᴀɴ: ᴜɴʙᴀɴ ᴀ ᴜꜱᴇʀ."""
+    
+    MATWARN = """ <b>ᴡᴀʀɴ</b>
+    
+ᴛʜɪꜱ ᴍᴏᴅᴜʟᴇ ᴀʟʟᴏᴡꜱ ʏᴏᴜ ᴛᴏ ᴅᴏ ᴛʜᴀᴛ ᴇᴀꜱɪʟʏ 
+
+**ᴀᴅᴍɪɴ ᴄᴏᴍᴍᴀɴᴅꜱ:**
+
+• /ᴡᴀʀɴ `<ʀᴇᴀꜱᴏɴ>`: ᴡᴀʀɴ ᴀ ᴜꜱᴇʀ.
+• /ᴅᴡᴀʀɴ `<ʀᴇᴀꜱᴏɴ>`: ᴡᴀʀɴ ᴀ ᴜꜱᴇʀ ʙʏ ʀᴇᴘʟʏ, ᴀɴᴅ ᴅᴇʟᴇᴛᴇ ᴛʜᴇɪʀ ᴍᴇꜱꜱᴀɢᴇ.
+• /ꜱᴡᴀʀɴ `<ʀᴇᴀꜱᴏɴ>`: ꜱɪʟᴇɴᴛʟʏ ᴡᴀʀɴ ᴀ ᴜꜱᴇʀ, ᴀɴᴅ ᴅᴇʟᴇᴛᴇ ʏᴏᴜʀ ᴍᴇꜱꜱᴀɢᴇ.
+• /ᴡᴀʀɴꜱ: ꜱᴇᴇ ᴀ ᴜꜱᴇʀ'ꜱ ᴡᴀʀɴɪɴɢꜱ.
+• /ʀᴍᴡᴀʀɴ: ʀᴇᴍᴏᴠᴇ ᴀ ᴜꜱᴇʀ'ꜱ ʟᴀᴛᴇꜱᴛ ᴡᴀʀɴɪɴɢ.
+• /ʀᴇꜱᴇᴛᴡᴀʀɴ: ʀᴇꜱᴇᴛ ᴀʟʟ ᴏꜰ ᴀ ᴜꜱᴇʀ'ꜱ ᴡᴀʀɴɪɴɢꜱ ᴛᴏ 0.
+• /ᴡᴀʀɴɪɴɢꜱ: ɢᴇᴛ ᴛʜᴇ ᴄʜᴀᴛ'ꜱ ᴡᴀʀɴɪɴɢ ꜱᴇᴛᴛɪɴɢꜱ.
+• /ᴡᴀʀɴᴍᴏᴅᴇ `<ʙᴀɴ/ᴋɪᴄᴋ/ᴍᴜᴛᴇ>`: ꜱᴇᴛ ᴛʜᴇ ᴄʜᴀᴛ'ꜱ ᴡᴀʀɴ ᴍᴏᴅᴇ.
+• /ᴡᴀʀɴʟɪᴍɪᴛ `<ɴᴜᴍʙᴇʀ>`: ꜱᴇᴛ ᴛʜᴇ ɴᴜᴍʙᴇʀ ᴏꜰ ᴡᴀʀɴɪɴɢꜱ ʙᴇꜰᴏʀᴇ ᴜꜱᴇʀꜱ ᴀʀᴇ ᴘᴜɴɪꜱʜᴇᴅ.
+
+**ᴇxᴀᴍᴘʟᴇꜱ:**
+
+`/ᴡᴀʀɴ @ᴜꜱᴇʀ`: ᴛʜɪꜱ ᴡᴀʀɴꜱ ᴀ ᴜꜱᴇʀ ɪɴ ᴛʜᴇ ᴄʜᴀᴛ. """
+    
+    MATAPPROVE = """ <b>ᴀᴘᴘʀᴏᴠᴇ</b>
+
+**ᴀᴅᴍɪɴ ᴄᴏᴍᴍᴀɴᴅꜱ:** 
+• /ᴀᴘᴘʀᴏᴠᴀʟ: ᴄʜᴇᴄᴋ ᴀ ᴜꜱᴇʀ'ꜱ ᴀᴘᴘʀᴏᴠᴀʟ ꜱᴛᴀᴛᴜꜱ ɪɴ ᴛʜɪꜱ ᴄʜᴀᴛ. 
+• /ᴀᴘᴘʀᴏᴠᴇ: ᴀᴘᴘʀᴏᴠᴇ ᴏꜰ ᴀ ᴜꜱᴇʀ. ʟᴏᴄᴋꜱ, ʙʟᴀᴄᴋʟɪꜱᴛꜱ, ᴀɴᴅ ᴀɴᴛɪꜰʟᴏᴏᴅ ᴡᴏɴ'ᴛ ᴀᴘᴘʟʏ ᴛᴏ ᴛʜᴇᴍ ᴀɴʏᴍᴏʀᴇ. 
+• /ᴜɴᴀᴘᴘʀᴏᴠᴇ: ᴜɴᴀᴘᴘʀᴏᴠᴇ ᴏꜰ ᴀ ᴜꜱᴇʀ. ᴛʜᴇʏ ᴡɪʟʟ ɴᴏᴡ ʙᴇ ꜱᴜʙᴊᴇᴄᴛ ᴛᴏ ʙʟᴏᴄᴋʟɪꜱᴛꜱ. 
+• /ᴀᴘᴘʀᴏᴠᴇᴅ: ʟɪꜱᴛ ᴀʟʟ ᴀᴘᴘʀᴏᴠᴇᴅ ᴜꜱᴇʀꜱ. 
+• /ᴜɴᴀᴘᴘʀᴏᴠᴇᴀʟʟ: ᴜɴᴀᴘᴘʀᴏᴠᴇ *ᴀʟʟ* ᴜꜱᴇʀꜱ ɪɴ ᴀ ᴄʜᴀᴛ. ᴛʜɪꜱ ᴄᴀɴɴᴏᴛ ʙᴇ ᴜɴᴅᴏɴᴇ!  
+
+**ᴇxᴀᴍᴘʟᴇ:** 
+
+`/ᴀᴘᴘʀᴏᴠᴇ @ᴜꜱᴇʀɴᴀᴍᴇ`: ᴛʜɪꜱ ᴀᴘᴘʀᴏᴠᴇꜱ ᴀ ᴜꜱᴇʀ ɪɴ ᴛʜᴇ ᴄʜᴀᴛ."""
+
+    MATFLOOD = """
+**ᴀɴᴛɪ ꜰʟᴏᴏᴅ**
+
+**ᴜꜱᴇʀ ᴄᴏᴍᴍᴀɴᴅꜱ:** 
+• /ꜰʟᴏᴏᴅ: ᴛᴏ ᴄʜᴇᴄᴋ ᴡᴇᴀᴛʜᴇʀ ᴛʜᴇ ɢʀᴏᴜᴘ ɪꜱ ᴘʀᴏᴛᴇᴄᴛᴇᴅ ꜰʀᴏᴍ ꜱᴘᴀᴍ ᴏʀ ɴᴏᴛ.  
+
+**ᴀᴅᴍɪɴ ᴏɴʟʏ:** 
+• /ꜱᴇᴛꜰʟᴏᴏᴅ `ᴏɴ/ᴏꜰꜰ`: ᴛᴏ ᴀᴄᴛɪᴠᴀᴛᴇ ᴏʀ ᴅᴇᴀᴄᴛɪᴠᴀᴛᴇ ᴛʜᴇ ꜰʟᴏᴏᴅ ᴘʀᴏᴛᴇᴄᴛɪᴏɴ 
+• /ꜰʟᴏᴏᴅᴀᴄᴛɪᴏɴ: ᴛᴏ ᴄᴜꜱᴛᴏᴍɪᴢᴇ ᴛʜᴇ ꜰʟᴏᴏᴅ ꜱᴇᴛᴛɪɴɢꜱ.  
+
+**ᴇxᴀᴍᴘʟᴇ:** 
+`/ꜱᴇᴛꜰʟᴏᴏᴅ ᴏɴ`
+"""
+
+    MATNOTES = """
+**ɴᴏᴛᴇꜱ**  ꜱᴀᴠᴇ ᴀ ɴᴏᴛᴇ, ɢᴇᴛ ᴛʜᴀᴛ, ᴇᴠᴇɴ ʏᴏᴜ ᴄᴀɴ ᴅᴇʟᴇᴛᴇ ᴛʜᴀᴛ ɴᴏᴛᴇ. 
+ᴛʜɪꜱ ɴᴏᴛᴇ ᴏɴʟʏ ᴀᴠᴀɪᴀʙʟᴇ ꜰᴏʀ ʏᴏᴜʀ ᴡʜᴏʟᴇ ɢʀᴏᴜᴘ! 
+ᴏɴʟʏ ᴀᴅᴍɪɴꜱ ᴄᴀɴ ꜱᴀᴠᴇ ᴀɴᴅ ᴅᴇʟᴇᴛᴇɴᴏᴛᴇꜱ, ᴀɴʏᴏɴᴇ ᴄᴀɴ ɢᴇᴛ ᴛʜᴇᴍ.  
+• /ꜱᴀᴠᴇ `<ɴᴏᴛᴇɴᴀᴍᴇ>` <`ɴᴏᴛᴇ ᴄᴏɴᴛᴇɴᴛ ᴏʀ ʀᴇᴘʟʏ ᴛᴏ ᴍᴇꜱꜱᴀɢᴇ>`     ꜱᴀᴠᴇ ᴀ ɴᴏᴛᴇ, 
+ʏᴏᴜ ᴄᴀɴ ɢᴇᴛ ᴏʀ ᴅᴇʟᴇᴛᴇ ᴛʜᴀᴛ ʟᴀᴛᴇʀ.  
+• /ɢᴇᴛ `<ɴᴏᴛᴇ>` ᴏʀ #<ɴᴏᴛᴇ>     ɢᴇᴛ ᴛʜᴀᴛ ɴᴏᴛᴇ, ɪꜰ ᴀᴠᴀɪᴀʙʟᴇ.  
+• /ɢᴇᴛ `<ɴᴏᴛᴇ>` ɴᴏꜰᴏʀᴍᴀᴛ ᴏʀ /ɢᴇᴛ `<ɴᴏᴛᴇ>` ʀᴀᴡ     ɢᴇᴛ ᴛʜᴀᴛ ɴᴏᴛᴇ ɪɴ ʀᴀᴡ ꜰᴏʀᴍᴀᴛ,
+ꜱᴏ ʏᴏᴜ ᴄᴀɴ ᴇᴅɪᴛ ᴀɴᴅ ᴜᴘᴅᴀᴛᴇ ɪᴛ.  
+• /ᴄʟᴇᴀʀ `<ɴᴏᴛᴇ>`     ᴅᴇʟᴇᴛᴇ ᴛʜᴀᴛ ɴᴏᴛᴇ, ɪꜰ ᴀᴠᴀɪᴀʙʟᴇ.  
+• /ᴄʟᴇᴀʀᴀʟʟ     ᴄʟᴇᴀʀꜱ ᴀʟʟ ɴᴏᴛᴇꜱ ɪɴ ᴛʜᴇ ᴄʜᴀᴛ!     
+
+**ɴᴏᴛᴇ:** ᴄᴀɴ ᴏɴʟʏ ʙᴇ ᴜꜱᴇᴅ ʙʏ ᴏᴡɴᴇʀ ᴏꜰ ᴄʜᴀᴛ!  
+• /ꜱᴀᴠᴇᴅ ᴏʀ /ɴᴏᴛᴇꜱ     ɢᴇᴛ ᴀʟʟ ʏᴏᴜʀ ɴᴏᴛᴇꜱ, ɪꜰ ᴛᴏᴏ ᴍᴜᴄʜ ɴᴏᴛᴇꜱ, ᴘʟᴇᴀꜱᴇ ᴜꜱᴇ ᴛʜɪꜱ ɪɴ ʏᴏᴜʀ ꜱᴀᴠᴇᴅ ᴍᴇꜱꜱᴀɢᴇ ɪɴꜱᴛᴇᴀᴅ!  
+• /ᴘʀɪᴠᴀᴛᴇɴᴏᴛᴇꜱ `<ᴏɴ/ʏᴇꜱ/ɴᴏ/ᴏꜰꜰ>`: ᴡʜᴇᴛʜᴇʀ ᴛᴏ ᴛᴜʀɴ ᴘʀɪᴠᴀᴛᴇ ʀᴜʟᴇꜱ ᴏɴ ᴏʀ ᴏꜰꜰ, ᴘʀᴇᴠᴇɴᴛꜱ ꜱᴘᴀᴍ ɪɴ ᴄʜᴀᴛ ᴡʜᴇɴ ᴘᴇᴏᴘʟᴇ ᴜꜱᴇ ɴᴏᴛᴇꜱ ᴄᴏᴍᴍᴀɴᴅ.  
+
+**ɴᴏᴛᴇ ꜰᴏʀᴍᴀᴛ**     
+ᴄʜᴇᴄᴋ /ᴍᴀʀᴋᴅᴏᴡɴʜᴇʟᴘ ꜰᴏʀ ʜᴇʟᴘ ʀᴇʟᴀᴛᴇᴅ ᴛᴏ ꜰᴏʀᴍᴀᴛᴛɪɴɢ!"""      
+
+    MATADMINS = """ 
+**ᴀᴅᴍɪɴ**  
+**ᴜꜱᴇʀ ᴄᴏᴍᴍᴀɴᴅꜱ:** 
+• /ᴀᴅᴍɪɴʟɪꜱᴛ: ʟɪꜱᴛ ᴀʟʟ ᴛʜᴇ ᴀᴅᴍɪɴꜱ ɪɴ ᴛʜᴇ ɢʀᴏᴜᴘ.  
+    
+**ᴀᴅᴍɪɴ ᴏɴʟʏ:** 
+• /ɪɴᴠɪᴛᴇʟɪɴᴋ: ɢᴇᴛꜱ ᴄʜᴀᴛ ɪɴᴠɪᴛᴇʟɪɴᴋ. 
+• /ᴘʀᴏᴍᴏᴛᴇ: ᴘʀᴏᴍᴏᴛᴇꜱ ᴛʜᴇ ᴜꜱᴇʀ ʀᴇᴘʟɪᴇᴅ ᴛᴏ ᴏʀ ᴛᴀɢɢᴇᴅ (ꜱᴜᴘᴘᴏʀᴛꜱ ᴡɪᴛʜ ᴛɪᴛʟᴇ). 
+• /ꜰᴜʟʟᴘʀᴏᴍᴏᴛᴇ: ꜰᴜʟʟʏ ᴘʀᴏᴍᴏᴛᴇꜱ ᴛʜᴇ ᴜꜱᴇʀ ʀᴇᴘʟɪᴇᴅ ᴛᴏ ᴏʀ ᴛᴀɢɢᴇᴅ (ꜱᴜᴘᴘᴏʀᴛꜱ ᴡɪᴛʜ ᴛɪᴛʟᴇ). 
+• /ᴅᴇᴍᴏᴛᴇ: ᴅᴇᴍᴏᴛᴇꜱ ᴛʜᴇ ᴜꜱᴇʀ ʀᴇᴘʟɪᴇᴅ ᴛᴏ ᴏʀ ᴛᴀɢɢᴇᴅ. 
+• /ꜱᴇᴛɢᴘɪᴄ: ꜱᴇᴛ ɢʀᴏᴜᴘ ᴘɪᴄᴛᴜʀᴇ. 
+• /ᴀᴅᴍɪɴᴄᴀᴄʜᴇ: ʀᴇʟᴏᴀᴅꜱ ᴛʜᴇ ʟɪꜱᴛ ᴏꜰ ᴀʟʟ ᴛʜᴇ ᴀᴅᴍɪɴꜱ ɪɴ ᴛʜᴇ ɢʀᴏᴜᴘ. 
+• /ᴢᴏᴍʙɪᴇꜱ: ʙᴀɴꜱ ᴀʟʟ ᴛʜᴇ ᴅᴇʟᴇᴛᴇᴅ ᴀᴄᴄᴏᴜɴᴛꜱ. (ᴏᴡɴᴇʀ ᴏɴʟʏ) 
+• /ᴛɪᴛʟᴇ: ꜱᴇᴛꜱ ᴀ ᴄᴜꜱᴛᴏᴍ ᴛɪᴛʟᴇ ꜰᴏʀ ᴀɴ ᴀᴅᴍɪɴ ᴛʜᴀᴛ ᴛʜᴇ ʙᴏᴛ ᴘʀᴏᴍᴏᴛᴇᴅ. 
+• /ᴅɪꜱᴀʙʟᴇ <ᴄᴏᴍᴍᴀɴᴅɴᴀᴍᴇ>: ꜱᴛᴏᴘ ᴜꜱᴇʀꜱ ꜰʀᴏᴍ ᴜꜱɪɴɢ "ᴄᴏᴍᴍᴀɴᴅɴᴀᴍᴇ" ɪɴ ᴛʜɪꜱ ɢʀᴏᴜᴘ.
+• /ᴇɴᴀʙʟᴇ <ɪᴛᴇᴍ ɴᴀᴍᴇ>: ᴀʟʟᴏᴡ ᴜꜱᴇʀꜱ ꜰʀᴏᴍ ᴜꜱɪɴɢ "ᴄᴏᴍᴍᴀɴᴅɴᴀᴍᴇ" ɪɴ ᴛʜɪꜱ ɢʀᴏᴜᴘ. 
+• /ᴅɪꜱᴀʙʟᴇᴀʙʟᴇ: ʟɪꜱᴛ ᴀʟʟ ᴅɪꜱᴀʙʟᴇᴀʙʟᴇ ᴄᴏᴍᴍᴀɴᴅꜱ. 
+• /ᴅɪꜱᴀʙʟᴇᴅᴇʟ <ʏᴇꜱ/ᴏꜰꜰ>: ᴅᴇʟᴇᴛᴇ ᴅɪꜱᴀʙʟᴇᴅ ᴄᴏᴍᴍᴀɴᴅꜱ ᴡʜᴇɴ ᴜꜱᴇᴅ ʙʏ ɴᴏɴ-ᴀᴅᴍɪɴꜱ.
+• /ᴅɪꜱᴀʙʟᴇᴅ: ʟɪꜱᴛ ᴛʜᴇ ᴅɪꜱᴀʙʟᴇᴅ ᴄᴏᴍᴍᴀɴᴅꜱ ɪɴ ᴛʜɪꜱ ᴄʜᴀᴛ. 
+• /ᴇɴᴀʙʟᴇᴀʟʟ: ᴇɴᴀʙʟᴇ ᴀʟʟ ᴅɪꜱᴀʙʟᴇᴅ ᴄᴏᴍᴍᴀɴᴅꜱ.  
+    
+**ᴇxᴀᴍᴘʟᴇ:** 
+`/ᴘʀᴏᴍᴏᴛᴇ @ᴜꜱᴇʀɴᴀᴍᴇ`: ᴛʜɪꜱ ᴘʀᴏᴍᴏᴛᴇꜱ ᴀ ᴜꜱᴇʀ ᴛᴏ ᴀᴅᴍɪɴ."""      
+     MATSTICKER = """
+ᴜꜱᴇʀ ᴄᴏᴍᴍᴀɴᴅꜱ:          
+• /ꜱᴛɪᴄᴋᴇʀɪᴅ : ʀᴇᴘʟʏ ᴛᴏ ᴀɴʏ ꜱᴛɪᴄᴋᴇʀ ᴛᴏ ɢᴇᴛ ɪᴛ'ꜱ ɪᴅ"""      
+MATACCEPTOR = """ <b>ᴀᴜᴛᴏ ᴀᴄᴄᴇᴘᴛᴏʀ</b>      
+
+- ᴛᴏ ᴇɴᴀʙʟᴇ ᴛʜᴇ ᴀᴜᴛᴏ ᴀᴄᴄᴇᴘᴛ ꜰᴇᴀᴛᴜʀᴇ, ꜱɪᴍᴘʟʏ ᴛʏᴘᴇ /ᴀᴜᴛᴏᴀᴄᴄᴇᴘᴛ ᴏɴ ɪɴ ᴛʜᴇ ᴄʜᴀᴛ. 
+- ɪꜰ ʏᴏᴜ ᴡᴀɴᴛ ᴛᴏ ᴅɪꜱᴀʙʟᴇ ᴛʜᴇ ᴀᴜᴛᴏ ᴀᴄᴄᴇᴘᴛ ꜰᴇᴀᴛᴜʀᴇ, ᴜꜱᴇ ᴛʜᴇ ᴄᴏᴍᴍᴀɴᴅ /ᴀᴜᴛᴏᴀᴄᴄᴇᴘᴛ ᴏꜰꜰ     
+"""      
+
+    MATFUNS = """ <b>ꜰᴜɴ</b>  
+• /ʀᴜɴꜱ: ʀᴇᴘʟʏ ᴀ ʀᴀɴᴅᴏᴍ ꜱᴛʀɪɴɢ ꜰʀᴏᴍ ᴀɴ ᴀʀʀᴀʏ ᴏꜰ ʀᴇᴘʟɪᴇꜱ. 
+• /ꜱʟᴀᴘ: ꜱʟᴀᴘ ᴀ ᴜꜱᴇʀ, ᴏʀ ɢᴇᴛ ꜱʟᴀᴘᴘᴇᴅ ɪꜰ ɴᴏᴛ ᴀ ʀᴇᴘʟʏ. 
+• /ɪɴꜱᴜʟᴛ: ᴛᴏ ɪɴꜱᴜʟᴛ ᴀ ᴜꜱᴇʀ, ᴏʀ ɢᴇᴛ ɪɴꜱᴜʟᴛᴇᴅ ɪꜰ ɴᴏᴛ ᴀ ʀᴇᴘʟʏ 
+• /ꜱʜʀᴜɢ : ɢᴇᴛ ꜱʜʀᴜɢ xᴅ. 
+• /ᴅᴇᴄɪᴅᴇ : ʀᴀɴᴅᴏᴍʟʏ ᴀɴꜱᴡᴇʀꜱ ʏᴇꜱ/ɴᴏ/ᴍᴀʏʙᴇ 
+• /ᴛᴏꜱꜱ : ᴛᴏꜱꜱᴇꜱ ᴀ ᴄᴏɪɴ 
+• /ʏᴇꜱ : ᴄʜᴇᴄᴋ ᴜʀꜱᴇʟꜰ :ᴠ 
+• /ɴᴏ : ᴄʜᴇᴄᴋ ᴜʀꜱᴇʟꜰ :ᴠ 
+• /ʙʟᴜᴇᴛᴇxᴛ : ᴄʜᴇᴄᴋ ᴜʀꜱᴇʟꜰ :ᴠ 
+• /ʀᴏʟʟ : ʀᴏʟʟ ᴀ ᴅɪᴄᴇ. 
+• /ʀᴇᴀᴄᴛ : ʀᴀɴᴅᴏᴍ ʀᴇᴀᴄᴛɪᴏɴ 
+• /ꜱʜᴏᴜᴛ <ᴋᴇʏᴡᴏʀᴅ>: ᴡʀɪᴛᴇ ᴀɴʏᴛʜɪɴɢ ʏᴏᴜ ᴡᴀɴᴛ ᴛᴏ ɢɪᴠᴇ ʟᴏᴜᴅ ꜱʜᴏᴜᴛ.  """          
+    MATRULES = """ 
+**ʀᴜʟᴇꜱ**  
+ꜱᴇᴛ ʀᴜʟᴇꜱ ꜰᴏʀ ʏᴏᴜ ᴄʜᴀᴛ ꜱᴏ ᴛʜᴀᴛ ᴍᴇᴍʙᴇʀꜱ ᴋɴᴏᴡ ᴡʜᴀᴛ ᴛᴏ ᴅᴏ ᴀɴᴅ ᴡʜᴀᴛ ɴᴏᴛ ᴛᴏ ᴅᴏ ɪɴ ʏᴏᴜʀ ɢʀᴏᴜᴘ!  
+• /ʀᴜʟᴇꜱ: ɢᴇᴛ ᴛʜᴇ ʀᴜʟᴇꜱ ꜰᴏʀ ᴄᴜʀʀᴇɴᴛ ᴄʜᴀᴛ.  
+
+**ᴀᴅᴍɪɴ ᴏɴʟʏ:** 
+• /ꜱᴇᴛʀᴜʟᴇꜱ `<ʀᴜʟᴇꜱ>`: ꜱᴇᴛ ᴛʜᴇ ʀᴜʟᴇꜱ ꜰᴏʀ ᴛʜɪꜱ ᴄʜᴀᴛ, ᴀʟꜱᴏ ᴡᴏʀᴋꜱ ᴀꜱ ᴀ ʀᴇᴘʟʏ ᴛᴏ ᴀ ᴍᴇꜱꜱᴀɢᴇ. 
+• /ᴄʟᴇᴀʀʀᴜʟᴇꜱ: ᴄʟᴇᴀʀ ᴛʜᴇ ʀᴜʟᴇꜱ ꜰᴏʀ ᴛʜɪꜱ ᴄʜᴀᴛ. 
+• /ᴘʀɪᴠʀᴜʟᴇꜱ `<ᴏɴ/ʏᴇꜱ/ɴᴏ/ᴏꜰꜰ>`: ᴛᴜʀɴꜱ ᴏɴ/ᴏꜰꜰ ᴛʜᴇ ᴏᴘᴛɪᴏɴ ᴛᴏ ꜱᴇɴᴅ ᴛʜᴇ ʀᴜʟᴇꜱ ᴛᴏ ᴘᴍ ᴏꜰ ᴜꜱᴇʀ ᴏʀ ɢʀᴏᴜᴘ.  
+
+**ɴᴏᴛᴇ ꜰᴏʀᴍᴀᴛ**     
+ᴄʜᴇᴄᴋ /ᴍᴀʀᴋᴅᴏᴡɴʜᴇʟᴘ ꜰᴏʀ ʜᴇʟᴘ ʀᴇʟᴀᴛᴇᴅ ᴛᴏ ꜰᴏʀᴍᴀᴛᴛɪɴɢ!
+"""
